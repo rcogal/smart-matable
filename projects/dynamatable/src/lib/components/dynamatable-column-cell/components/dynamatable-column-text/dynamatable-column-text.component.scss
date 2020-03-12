@@ -1,0 +1,23 @@
+.full-width {
+  width: 100%;
+}
+
+input {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+.mat-option {
+  height: auto !important;
+  line-height: 38px !important;
+}
+
+.mat-option-text {
+  font-size: 14px !important;
+  color: #000000;
+}

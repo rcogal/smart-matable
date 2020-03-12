@@ -1,0 +1,12 @@
+<div class="relative">
+  <input
+    [owlDateTime]="dt2"
+    placeholder="{{ 'Select Date' }}"
+    [(ngModel)]="value"
+    class="full-width"
+    (keyup.enter)="onDateTimeChange(this.value)"
+    (dateTimeChange)="onDateTimeChange(this.value)">
+
+  <mat-icon matDatepickerToggleIcon svgIcon="date" class="date" [owlDateTimeTrigger]="dt2"></mat-icon>
+  <owl-date-time #dt2></owl-date-time>
+</div>

@@ -1,0 +1,45 @@
+<span [ngSwitch]="type">
+  <ng-container *ngSwitchCase="ColumnType.TEXT">
+    <rc-dynamatable-column-text
+      [entity]="entity"
+      [property]="property"
+      [column]="column"
+      [value]="value"
+      [rowIndex]="rowIndex"
+      (update)="onUpdateColumnCell($event)">
+    </rc-dynamatable-column-text>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ColumnType.NUMBER">
+    <rc-dynamatable-column-number
+      [entity]="entity"
+      [property]="property"
+      [column]="column"
+      [value]="value"
+      [rowIndex]="rowIndex"
+      (update)="onUpdateColumnCell($event)">
+    </rc-dynamatable-column-number>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ColumnType.DATE">
+    <rc-dynamatable-column-date
+      [entity]="entity"
+      [property]="property"
+      [column]="column"
+      [value]="value"
+      [rowIndex]="rowIndex"
+      (update)="onUpdateColumnCell($event)">
+    </rc-dynamatable-column-date>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ColumnType.SELECT">
+    <rc-dynamatable-column-select
+      [entity]="entity"
+      [property]="property"
+      [column]="column"
+      [value]="value"
+      [rowIndex]="rowIndex"
+      (update)="onUpdateColumnCell($event)">
+    </rc-dynamatable-column-select>
+  </ng-container>
+</span>

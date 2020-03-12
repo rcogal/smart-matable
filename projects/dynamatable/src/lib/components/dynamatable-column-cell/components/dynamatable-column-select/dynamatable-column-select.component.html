@@ -1,0 +1,7 @@
+<select class="full-width" [ngModel]="selectedValue" (ngModelChange)="select($event)">git pu
+  <option
+    *ngFor="let option of config.values"
+    [value]="option[config.displayValue]">
+      {{ option[config.displayField] }}
+  </option>
+</select>

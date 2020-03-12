@@ -1,0 +1,23 @@
+.full-width {
+  width: 100%;
+}
+
+select {
+  background: url('/assets/projects/chevron-down.svg') no-repeat 97% #FFFFFF !important;
+  background-size: 13px !important;
+  background-position-x: 500px;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 5px 10px;
+  outline: none;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+option {
+  columns: #000000;
+  outline: none;
+  border: none;
+}

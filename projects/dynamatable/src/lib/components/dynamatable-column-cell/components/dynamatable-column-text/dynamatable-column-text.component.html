@@ -1,0 +1,18 @@
+<form>
+  <input
+    (keyup.enter)="onUpdateInputData()"
+    placeholder="{{ 'Enter '+ column.display }}"
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    type="text"
+    class="full-width"
+    #inputText>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [displayWith]="displayFn"
+    (optionSelected)="onSelectAutocomplete($event)">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{ option[autocomplete.displayField] }}
+    </mat-option>
+  </mat-autocomplete>
+</form>

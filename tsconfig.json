@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "dynamatable": [
+        "dist/dynamatable"
+      ],
+      "dynamatable/*": [
+        "dist/dynamatable/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
