@@ -182,8 +182,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
       this.initializeColumns();
     });
 
-    console.log(this.dynacolumns);
-
     this.dynacolumns.changes.subscribe( () => {
       this.initializeColumns();
     });
@@ -291,14 +289,14 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * @param {*} [data={}]
    */
   onUpdateHeader(data: any = {}) {
+
     this.forceDisabledHeaderAction = false;
     this.updateHeader.emit(data);
   }
 
   /**
-   * Set displayed colukmns dynamic based on {HiveSmartTableColumnDirective} smart table column
+   * Set displayed colukmns dynamic based on {DynamatableColumn} dyna columns
    *
-   * @memberof HiveSmartTableComponent
    */
   setDisplayedColumns() {
 
@@ -419,7 +417,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
     const editable = column.config.editable;
 
-    if ((editable === true || editable === undefined) && !row[ this.refId ]) {
+    if (editable === true && !row[ this.refId ]) {
       return DynamatableColumnMode.EDIT;
     } else {
       return DynamatableColumnMode.VIEW;
@@ -455,9 +453,9 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * Check if header is sortable
    *
    * @param {DynamatableColumn} column
-   * @returns
+   * @returns {boolean}
    */
-  isHeaderSortDisabled(column: DynamatableColumn) {
+  isHeaderSortDisabled(column: DynamatableColumn): boolean {
     return column.config && !(column.config.sortable === undefined || column.config.sortable === true);
   }
 
@@ -467,6 +465,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * @param {*} $event
    */
   onEditHeader($event) {
+    console.log($event);
     this.forceDisabledHeaderAction = true;
   }
 
@@ -475,7 +474,8 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   }
 
   isHeaderEditable(config) {
-    if (this.readonly) {
+
+    if (this.readonly === true) {
       return false;
     }
 

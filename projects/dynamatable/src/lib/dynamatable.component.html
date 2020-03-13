@@ -42,12 +42,13 @@
           [editable]="isHeaderEditable(column?.config)"
           (editMode)="onEditHeader($event)">
           <ng-template rcDynamatableColumnViewMode>
-            {{ getColumnHeader(column.name) }}
+            <!-- {{ getColumnHeader(column.name) }} -->
+            {{ column.display }}
           </ng-template>
           <ng-template rcDynamatableColumnEditMode>
             <rc-dynamatable-column-header
               [column]="column"
-              [value]="getColumnHeader(column.name)"
+              [value]="column.display"
               (update)="onUpdateHeader($event)">
             </rc-dynamatable-column-header>
           </ng-template>
@@ -94,7 +95,6 @@
         </rc-dynamatable-column-menu>
       </th>
       <td mat-cell *matCellDef="let row; let i = index;" align="center" class="action-column">
-        <mat-icon *ngIf="row[refId]" class="ic-close-icon cursor-pointer" svgIcon="ic-activity" (click)="view(row)"></mat-icon>
         <mat-icon class="ic-close-icon cursor-pointer" (click)="deleteRow(row, i)">delete</mat-icon>
       </td>
   </ng-container>

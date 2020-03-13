@@ -60,7 +60,7 @@ export class DynamatableColumnEditModeComponent implements OnInit, OnDestroy {
   @ContentChild(DynamatableColumnViewModeDirective, { static: true })
   public viewComp: DynamatableColumnViewModeDirective;
 
-  @ContentChild(DynamatableColumnEditModeDirective, {static: true})
+  @ContentChild(DynamatableColumnEditModeDirective, {static: true })
   public editComp: DynamatableColumnEditModeDirective;
 
   public editModeSubject = new Subject();
