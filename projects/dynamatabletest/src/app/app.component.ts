@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dynamatabletest';
+
+  columns = [
+    {
+      name: 'remarks',
+      display: 'Remarks',
+      type: 'text',
+      config: {}
+    },
+    {
+      name: 'runlineName',
+      display: 'Runline',
+      type: 'text',
+      config: {}
+    }
+  ];
+
+  dataSource: any[] = [];
+
 }

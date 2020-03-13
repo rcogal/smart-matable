@@ -63,7 +63,8 @@
               "projects/dynamatabletest/src/assets"
             ],
             "styles": [
-              "projects/dynamatabletest/src/styles.scss"
+              "projects/dynamatabletest/src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           },
@@ -128,7 +129,8 @@
               "projects/dynamatabletest/src/assets"
             ],
             "styles": [
-              "projects/dynamatabletest/src/styles.scss"
+              "projects/dynamatabletest/src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           }

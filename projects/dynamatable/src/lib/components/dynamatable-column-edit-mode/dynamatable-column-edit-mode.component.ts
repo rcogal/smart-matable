@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input, ContentChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ContentChild, ElementRef, OnDestroy } from '@angular/core';
 import { DynamatableColumnMode } from '../../models/dynamatable-column-mode.enum';
 import { DynamatableColumnViewModeDirective } from '../../directives/dynamatable-column-view-mode/dynamatable-column-view-mode.directive';
 import { DynamatableColumnEditModeDirective } from '../../directives/dynamatable-column-edit-mode/dynamatable-column-edit-mode.directive';
@@ -11,7 +11,7 @@ import { Subject, fromEvent } from 'rxjs';
   templateUrl: './dynamatable-column-edit-mode.component.html',
   styleUrls: ['./dynamatable-column-edit-mode.component.scss']
 })
-export class DynamatableColumnEditModeComponent implements OnInit {
+export class DynamatableColumnEditModeComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:variable-name
   private _mode: DynamatableColumnMode.VIEW | DynamatableColumnMode.EDIT;
@@ -123,5 +123,7 @@ export class DynamatableColumnEditModeComponent implements OnInit {
   toViewMode() {
     this.mode = DynamatableColumnMode.VIEW;
   }
+
+  ngOnDestroy() {}
 
 }

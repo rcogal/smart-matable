@@ -6,7 +6,7 @@ import { DynamatableColumnResponse } from '../../models/dynamatable-column-respo
 @Component({
   selector: 'rc-dynamatable-column-cell',
   templateUrl: './dynamatable-column-cell.component.html',
-  styleUrls: ['./dynamatable-column-cell.component.css']
+  styleUrls: ['./dynamatable-column-cell.component.scss']
 })
 export class DynamatableColumnCellComponent extends DynamatableColumnComponent {
 
@@ -27,6 +27,7 @@ export class DynamatableColumnCellComponent extends DynamatableColumnComponent {
    * Standard response of column component cell
    *
    */
+  // tslint:disable-next-line:variable-name
   private _response: DynamatableColumnResponse;
 
   constructor() {

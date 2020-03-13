@@ -1,1 +1,33 @@
-<p>dynamatable-column-menu works!</p>
+<mat-icon class="cursor-pointer add-icon" [matMenuTriggerFor]="appMenu" svgIcon="add-outline"></mat-icon>
+<mat-menu #appMenu="matMenu" id="column-menu-action">
+  <div id="menu-header">Add Column</div>
+  <mat-divider></mat-divider>
+
+  <!-- hide/show columns -->
+  <div class="menu-sub-header" *ngIf="systemDefaultColumn.length > 0">SYSTEM DEFAULTS</div>
+  <mat-selection-list (selectionChange)="onSelectionColumn($event)">
+    <ng-container *ngFor="let column of systemDefaultColumn">
+      <mat-list-option
+        checkboxPosition="before"
+        [value]="column"
+        [selected]="!column?.config?.hidden">
+        {{column.display}}
+      </mat-list-option>
+    </ng-container>
+  </mat-selection-list>
+
+  <!-- CUSTOM columns -->
+  <div class="menu-sub-header">CUSTOM</div>
+  <button mat-menu-item (click)="addColumn(Column.TEXT)">
+    <mat-icon svgIcon="ic-text" class="sub-icon"></mat-icon>
+    <span class="sub-label">Text</span>
+  </button>
+  <button mat-menu-item (click)="addColumn(Column.NUMBER)">
+    <mat-icon svgIcon="ic-number" class="sub-icon"></mat-icon>
+    <span class="sub-label">Number</span>
+  </button>
+  <button mat-menu-item (click)="addColumn(Column.DATE)">
+    <mat-icon svgIcon="ic-calendar" class="sub-icon"></mat-icon>
+    <span class="sub-label">Date</span>
+  </button>
+</mat-menu>

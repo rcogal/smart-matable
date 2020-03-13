@@ -31,6 +31,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OwlDateTimeModule, DateTimeAdapter, OWL_DATE_TIME_FORMATS, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { MomentDateTimeAdapter } from 'ng-pick-datetime-moment';
 
 const MY_MOMENT_FORMATS = {
   parseInput: 'MM/DD/YYYY HH:mm',
@@ -75,7 +79,20 @@ const MATERIAL_MODULES = [
     DynamatableColumnTextComponent
   ],
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    ...MATERIAL_MODULES
   ],
-  exports: [DynamatableComponent]
+  providers: [
+    { provide: DateTimeAdapter, useClass: MomentDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE] },
+    { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
+  ],
+  exports: [
+    DynamatableComponent,
+    DynamatableColumnDirective
+  ]
 })
 export class DynamatableModule { }

@@ -7,7 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'rc-dynamatable-column-view-mode',
   templateUrl: './dynamatable-column-view-mode.component.html',
-  styleUrls: ['./dynamatable-column-view-mode.component.css']
+  styleUrls: ['./dynamatable-column-view-mode.component.scss']
 })
 export class DynamatableColumnViewModeComponent implements OnInit {
 

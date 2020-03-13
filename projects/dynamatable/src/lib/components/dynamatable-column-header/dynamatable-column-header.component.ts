@@ -4,7 +4,7 @@ import { DynamatableColumn } from '../../models/dynamatable-column';
 @Component({
   selector: 'rc-dynamatable-column-header',
   templateUrl: './dynamatable-column-header.component.html',
-  styleUrls: ['./dynamatable-column-header.component.css']
+  styleUrls: ['./dynamatable-column-header.component.scss']
 })
 export class DynamatableColumnHeaderComponent {
 

@@ -1,0 +1,48 @@
+#menu-header {
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 5px 15px;
+  font-weight: 600;
+}
+
+
+.menu-sub-header {
+  font-size: 10px;
+  line-height: 12px;
+  padding: 8px 5px;
+  margin-left: 11px;
+  color: #75797C;
+  font-weight: 600;
+}
+
+.sub-icon {
+  width: 15px;
+}
+
+.sub-label {
+  font-size: 14px;
+}
+
+
+.mat-menu-item {
+  line-height: 35px;
+  height: 35px;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+mat-list-option.mat-list-item {
+  height: 35px !important;
+
+  .mat-list-text {
+    font-size: 14px;
+  }
+}
+
+.add-icon {
+  padding: 4px;
+}
