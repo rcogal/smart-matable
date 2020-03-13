@@ -145,7 +145,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * Smart table column reference
    */
   @ContentChildren(DynamatableColumnDirective)
-  private smartTablecolumns: QueryList<DynamatableColumnDirective>;
+  private dynacolumns: QueryList<DynamatableColumnDirective>;
 
   constructor(private configSetting: DynamatableConfigurationService) { }
 
@@ -182,7 +182,9 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
       this.initializeColumns();
     });
 
-    this.smartTablecolumns.changes.subscribe( () => {
+    console.log(this.dynacolumns);
+
+    this.dynacolumns.changes.subscribe( () => {
       this.initializeColumns();
     });
 
@@ -202,7 +204,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    *
    */
   private initializeColumns(): void {
-    this.columns = this.smartTablecolumns.toArray();
+    this.columns = this.dynacolumns.toArray();
 
     this.selection.clear();
 

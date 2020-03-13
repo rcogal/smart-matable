@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DynamatableModule } from 'projects/dynamatable/src/public-api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { DynamatableModule } from 'projects/dynamatable/src/public-api';
   ],
   imports: [
     BrowserModule,
-    DynamatableModule
+    DynamatableModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

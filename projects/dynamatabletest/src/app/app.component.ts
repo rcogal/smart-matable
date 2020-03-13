@@ -22,6 +22,11 @@ export class AppComponent {
     }
   ];
 
-  dataSource: any[] = [];
+  dataSource: any[] = [
+    {
+      remarks: 'test remarks',
+      runlineName: 'END0123412'
+    }
+  ];
 
 }

@@ -27,7 +27,7 @@ export class DynamatableColumnEditModeComponent implements OnInit, OnDestroy {
 
   /**
    * Current view mode component
-  */
+   */
   @Output()
   public viewMode = new EventEmitter();
 
@@ -57,11 +57,11 @@ export class DynamatableColumnEditModeComponent implements OnInit, OnDestroy {
 
   public get mode() { return this._mode; }
 
-  @ContentChild(DynamatableColumnViewModeDirective, { static: false })
-  private viewComp: DynamatableColumnViewModeDirective;
+  @ContentChild(DynamatableColumnViewModeDirective, { static: true })
+  public viewComp: DynamatableColumnViewModeDirective;
 
-  @ContentChild(DynamatableColumnEditModeDirective, {static: false})
-  private editComp: DynamatableColumnEditModeDirective;
+  @ContentChild(DynamatableColumnEditModeDirective, {static: true})
+  public editComp: DynamatableColumnEditModeDirective;
 
   public editModeSubject = new Subject();
 
