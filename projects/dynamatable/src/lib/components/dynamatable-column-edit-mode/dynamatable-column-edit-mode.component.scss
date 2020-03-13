@@ -1,0 +1,9 @@
+.dynamatable-editable-input {
+  width: 100%;
+  min-height: 20px;
+  box-sizing: border-box;
+
+  &:hover {
+    outline: 1px dashed #CCCCCC;
+  }
+}

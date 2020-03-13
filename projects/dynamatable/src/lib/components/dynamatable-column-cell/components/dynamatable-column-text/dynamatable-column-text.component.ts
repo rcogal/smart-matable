@@ -25,6 +25,10 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
 
   filteredOptions: Observable<any[]>;
 
+  test(va) {
+    console.log('va', va);
+  }
+
   constructor() {
     super();
   }

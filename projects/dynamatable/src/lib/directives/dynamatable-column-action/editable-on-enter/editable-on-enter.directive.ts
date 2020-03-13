@@ -1,4 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, EventEmitter, Output } from '@angular/core';
 // tslint:disable-next-line:max-line-length
 import { DynamatableColumnEditModeComponent } from '../../../components/dynamatable-column-edit-mode/dynamatable-column-edit-mode.component';
 
@@ -7,10 +7,14 @@ import { DynamatableColumnEditModeComponent } from '../../../components/dynamata
 })
 export class EditableOnEnterDirective {
 
+  @Output() enter = new EventEmitter();
+
   constructor(private editable: DynamatableColumnEditModeComponent) { }
 
-  @HostListener('keyup.enter')
-  public onEnter() {
+  @HostListener('keyup.enter', ['$event'])
+  public onEnter(event) {
+    this.enter.emit(event.target.value);
+
     this.editable.toViewMode();
   }
 

@@ -27,9 +27,6 @@ export class DynamatableColumnHeaderComponent {
    */
   @Output() update = new EventEmitter();
 
-  constructor() {
-  }
-
   onUpdateInput() {
     this.update.emit({
       columnIndex: this.column.index,

@@ -1,6 +1,7 @@
 <form>
   <input
-    (keyup.enter)="onUpdateInputData()"
+    rcEditableOnEnter
+    (enter)="onUpdateInputData()"
     placeholder="{{ 'Enter '+ column.display }}"
     [formControl]="control"
     [matAutocomplete]="auto"

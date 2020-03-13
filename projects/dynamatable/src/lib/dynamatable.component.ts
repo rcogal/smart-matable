@@ -19,8 +19,7 @@ import { DynamatableColumnMode } from './models/dynamatable-column-mode.enum';
 @Component({
   selector: 'rc-dynamatable',
   templateUrl: './dynamatable.component.html',
-  styleUrls: ['./dynamatable.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./dynamatable.component.scss']
 })
 export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
@@ -36,6 +35,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * Reference ID for specific object. this is used as a reference if row is from db or dummy
    *
    * @type {*}
+   * @obsolete This is to be determine  if need to use this in  the code
    */
   @Input()
   public refId: any;
@@ -62,9 +62,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    */
   @Output()
   public removeRow = new EventEmitter();
-
-  @Output()
-  public viewRow = new EventEmitter();
 
   /**
    * Event:
@@ -120,10 +117,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   // data source selection model
   public selection = new SelectionModel<any>(true, []);
 
-  // cache column header to determine the type and display text
-  // tslint:disable-next-line:variable-name
-  private _cacheColumnHeader: any = {};
-
   // Displayed columns linked to datasource
   public displayedColumns = [];
 
@@ -133,13 +126,11 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   // Only disable the header action when edit mode on header is active
   public forceDisabledHeaderAction: boolean = false;
 
-  private editableInput: DynamatableColumnEditModeComponent;
+  @ViewChild(MatSort, { static: true })
+  public sort: MatSort;
 
-  private editableInput$: Subject<DynamatableColumnEditModeComponent> = new Subject();
-
-  @ViewChild(MatSort, { static: true}) public sort: MatSort;
-
-  @ViewChild('checkboxAll', { static: true }) public checkboxAll: MatCheckbox;
+  @ViewChild('checkboxAll', { static: true })
+  public checkboxAll: MatCheckbox;
 
   /**
    * Smart table column reference
@@ -164,13 +155,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
       .subscribe( () => {
         this.selectionItem.emit( this.selection );
       });
-
-    this.editableInput$.subscribe( editable => {
-      // tslint:disable-next-line:no-unused-expression
-      (editable && editable.toViewMode());
-      // clear the editable component reference
-      this.editableInput = null;
-    }) ;
   }
 
   sortData($event) {
@@ -210,15 +194,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   }
 
   /**
-   * Returns the cache column header
-   *
-   * @readonly
-   */
-  public get cacheColumnHeader(): DynamatableColumnHeaderCache {
-    return this._cacheColumnHeader;
-  }
-
-  /**
    * Emits the event that add row has been clicked
    *
    */
@@ -244,28 +219,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   }
 
   /**
-   * Get the column type
-   *
-   * @param {string} column
-   */
-  getColumnType(column: string): string {
-    return this.cacheColumnHeader[column].type;
-  }
-
-  /**
-   * Returns the display text of column header
-   *
-   * @param {string} column
-   */
-  getColumnHeader(column: string): string {
-    if (this.cacheColumnHeader[column]) {
-      return this.cacheColumnHeader[column].text;
-    }
-
-    return;
-  }
-
-  /**
    * Emits the updateCell event
    *
    * @param {*} [data={}]
@@ -274,8 +227,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
     try {
       // update the value of the specific column
       responseData.entity[ responseData.property ] = responseData.value;
-
-      this.editableInput$.next( this.editableInput );
 
       this.updateColumn.emit(responseData);
     } catch (ex) {
@@ -286,12 +237,15 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Emits the updateHeader event
    *
-   * @param {*} [data={}]
+   * @param {*} [data={columnIndex, value}]
    */
-  onUpdateHeader(data: any = {}) {
+  onUpdateHeader(data: { columnIndex: number, value: string }) {
+    if (data && data.columnIndex > -1) {
+      this.columns[data.columnIndex].display = data.value;
+      this.forceDisabledHeaderAction = false;
 
-    this.forceDisabledHeaderAction = false;
-    this.updateHeader.emit(data);
+      this.updateHeader.emit(data);
+    }
   }
 
   /**
@@ -299,10 +253,8 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    *
    */
   setDisplayedColumns() {
-
     // checkbox column
     this.displayedColumns = [];
-
 
     let sortIndex = 0;
 
@@ -312,11 +264,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
     }
 
     this.columns.forEach(( column, index) => {
-
-      this._cacheColumnHeader[column.name] = {
-        type: column.type,
-        text: column.display
-      };
 
       column.index = index;
 
@@ -332,7 +279,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
       // add column
       this.displayedColumns.push('action');
     }
-
   }
 
   /**
@@ -376,6 +322,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
+
     return numSelected === numRows;
   }
 
@@ -417,18 +364,11 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
     const editable = column.config.editable;
 
-    if (editable === true && !row[ this.refId ]) {
+    if (editable === true) {
       return DynamatableColumnMode.EDIT;
     } else {
       return DynamatableColumnMode.VIEW;
     }
-  }
-
-  /**
-   * Reference to the current active editable input
-   */
-  onEditMode($event: DynamatableColumnEditModeComponent) {
-    this.editableInput = $event;
   }
 
   /**
@@ -438,15 +378,13 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * @param {number} index
    */
   deleteRow(entity: any, index: number) {
-
-    if (!entity[ this.refId ]) {
+    if (index > -1) {
       this.dataSource.data.splice(index, 1);
 
       this.dataSource._updateChangeSubscription();
     }
 
     this.removeRow.emit(entity);
-
   }
 
   /**
@@ -465,12 +403,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * @param {*} $event
    */
   onEditHeader($event) {
-    console.log($event);
     this.forceDisabledHeaderAction = true;
-  }
-
-  view(entity: any) {
-    this.viewRow.emit(entity);
   }
 
   isHeaderEditable(config) {

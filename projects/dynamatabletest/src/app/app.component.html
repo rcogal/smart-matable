@@ -1,6 +1,5 @@
 <rc-dynamatable
   [dataSource]="dataSource">
-
   <rc-dynamatable-column
     *ngFor="let column of columns"
     [name]="column.name"
@@ -8,5 +7,4 @@
     [display]="column.display"
     [config]="column.config">
   </rc-dynamatable-column>
-
 </rc-dynamatable>

@@ -12,7 +12,9 @@ export class AppComponent {
       name: 'remarks',
       display: 'Remarks',
       type: 'text',
-      config: {}
+      config: {
+        width: 300
+      }
     },
     {
       name: 'runlineName',
@@ -23,6 +25,18 @@ export class AppComponent {
   ];
 
   dataSource: any[] = [
+    {
+      remarks: 'test remarks',
+      runlineName: 'END0123412'
+    },
+    {
+      remarks: 'test remarks',
+      runlineName: 'END0123412'
+    },
+    {
+      remarks: 'test remarks',
+      runlineName: 'END0123412'
+    },
     {
       remarks: 'test remarks',
       runlineName: 'END0123412'
