@@ -9,5 +9,15 @@
     "ng-pick-datetime-moment": "^1.0.8",
     "ngx-take-until-destroy": "^5.4.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "smart",
+    "table",
+    "material",
+    "inline editing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rcogal/smart-matable.git"
+  }
 }
