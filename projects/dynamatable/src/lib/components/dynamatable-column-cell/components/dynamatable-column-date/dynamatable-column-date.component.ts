@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamatableColumnComponent } from '../dynamatable-column/dynamatable-column.component';
 import { DynamatableColumnResponse } from 'projects/dynamatable/src/lib/models/dynamatable-column-response';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+
+const moment = moment_;
 
 @Component({
   selector: 'rc-dynamatable-column-date',

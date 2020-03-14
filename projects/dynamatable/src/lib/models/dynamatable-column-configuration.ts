@@ -1,7 +1,5 @@
 /**
  * Column config should correspond to column types
- *
- * @interface DynamatableColumnConfig
  */
 interface DynamatableColumnConfig {
   date?: any;

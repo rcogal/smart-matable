@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, QueryList, ContentChildren, AfterViewInit, OnDestroy, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, QueryList, ContentChildren, AfterViewInit, OnDestroy, OnChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DynamatableColumn, ColumnConfig } from './models/dynamatable-column';
 import { SelectionModel } from '@angular/cdk/collections';
-import { DynamatableColumnEditModeComponent } from './components/dynamatable-column-edit-mode/dynamatable-column-edit-mode.component';
+
 import { Subject } from 'rxjs';
 import { MatSort } from '@angular/material/sort';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -26,7 +26,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * DISABLE edit on the table in general
    *
-   * @type {boolean}
    */
   @Input()
   public readonly: boolean = false;
@@ -34,8 +33,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Reference ID for specific object. this is used as a reference if row is from db or dummy
    *
-   * @type {*}
-   * @obsolete This is to be determine  if need to use this in  the code
    */
   @Input()
   public refId: any;
@@ -43,7 +40,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Source data to display
    *
-   * @type {*}
    */
   @Input()
   public dataSource: any = new MatTableDataSource<any>([]);
@@ -225,7 +221,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Emits the updateCell event
    *
-   * @param {*} [data={}]
    */
   onUpdateColumn(responseData: DynamatableColumnResponse) {
     try {
@@ -241,7 +236,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Emits the updateHeader event
    *
-   * @param {*} [data={columnIndex, value}]
    */
   onUpdateHeader(data: { columnIndex: number, value: string }) {
     if (data && data.columnIndex > -1) {
@@ -288,8 +282,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Sets the index of specific column
    *
-   * @param {CdkDragStart} event
-   * @param {number} index
    */
   dragStarted(event: CdkDragStart, index: number ) {
     this.previousIndex = index;
@@ -298,8 +290,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Triggers the event when column is dropped
    *
-   * @param {CdkDropList} event
-   * @param {number} index
    */
   dropListDropped(event: CdkDropList, index: number) {
     if (event) {
@@ -314,7 +304,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Update the displaye columns when adding new column
    *
-   * @param {DynamatableColumn} column
    */
   onSelectionColumn(column: DynamatableColumn) {
     this.selectionSystemMenu.emit(column);
@@ -339,8 +328,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
   /**
    * selection on checkbox
-   *
-   * @param {DynamatableColumn} row
    */
   onSelectionItem(row: DynamatableColumn) {
     this.selection.toggle(row);
@@ -350,8 +337,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * Event
    *  delete column header
    *
-   * @param {number} columnIndex
-   * @param {DynamatableColumn} column
    */
   removeHeader(columnIndex: number, column: DynamatableColumn) {
 
@@ -384,8 +369,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Delete record
    *
-   * @param {*} entity
-   * @param {number} index
    */
   deleteRow(entity: any, index: number) {
     if (index > -1) {
@@ -400,8 +383,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Check if header is sortable
    *
-   * @param {DynamatableColumn} column
-   * @returns {boolean}
    */
   isHeaderSortDisabled(column: DynamatableColumn): boolean {
     return column.config && !(column.config.sortable === undefined || column.config.sortable === true);
@@ -410,7 +391,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   /**
    * Disable current sorting state when  editing the header
    *
-   * @param {*} $event
    */
   onEditHeader($event) {
     this.forceDisabledHeaderAction = true;

@@ -15,9 +15,9 @@ export class DynamatableConfigurationService {
     return this._config as DynamatableColumnConfiguration;
   }
 
-  public get columns() {
-    return this.config.columns || {};
-  }
+  // public get columns() {
+  //   return this.config.columns || {};
+  // }
 
   public setConfig(value: DynamatableColumnConfiguration) {
     this._config = value;

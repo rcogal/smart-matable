@@ -24,7 +24,8 @@
       ],
       "dynamatable/*": [
         "dist/dynamatable/*"
-      ]
+      ],
+      "@angular/*": [ "node_modules/@angular/*"]
     }
   },
   "angularCompilerOptions": {

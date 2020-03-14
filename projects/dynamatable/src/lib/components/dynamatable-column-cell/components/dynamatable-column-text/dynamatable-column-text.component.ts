@@ -50,7 +50,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * Get the current value of input from form control
    *
-   * @readonly
    */
   get currentData() {
     return this.control.value;
@@ -67,7 +66,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * get the data of the navigation property
    *
-   * @readonly
    */
   get navigationData() {
     if (this.navigation) {
@@ -118,8 +116,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * handle the setting of autocomplete
    *
-   * @private
-   * @param {boolean} enable
    */
   private setAutocomplete(enable: boolean) {
     this.autocompleteTrigger.autocompleteDisabled = enable;
@@ -185,7 +181,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * @config displayfield of autocomplete
    *
-   * @readonly
    */
   get displayField() {
     return this.autocomplete && this.autocomplete.displayField;
@@ -194,7 +189,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * @config display value of autocomplete
    *
-   * @readonly
    */
   get displayValue() {
     return this.autocomplete && this.autocomplete.displayValue;
@@ -204,7 +198,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
    * @config naivation property
    *  - used to navigate the value to specific property of the object
    *
-   * @readonly
    */
   get navigation() {
     return this.autocomplete && this.autocomplete.navigation;
@@ -213,7 +206,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * Autocomplete values
    *
-   * @readonly
    */
   get options(): any[] {
     return (this.autocomplete.values) || [];
@@ -222,8 +214,6 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * Column configuration
    *
-   * @readonly
-   * @type {InputTextConfig}
    */
   get config(): InputTextConfig {
     return this.getConfig<InputTextConfig>();
@@ -232,10 +222,8 @@ export class DynamatableColumnTextComponent extends DynamatableColumnComponent i
   /**
    * Display
    *
-   * @param {string} field
-   * @returns {*}
    */
-  get displayFn(): Function {
+  get displayFn() {
 
     const displayProperty = this.displayValue;
 

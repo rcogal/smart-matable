@@ -15,7 +15,6 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
   /**
    * Object property that's currently updated
    *
-   * @type {string}
    */
   @Input()
   public property: string;
@@ -23,7 +22,6 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
   /**
    * Current input value of object property
    *
-   * @type {*}
    */
   @Input()
   public value: any;
@@ -31,7 +29,6 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
   /**
    * Current index of the selected row
    *
-   * @type {number}
    */
   @Input()
   public rowIndex: number;
@@ -40,7 +37,6 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
   /**
    * Reference of the selected object
    *
-   * @type {*}
    */
   @Input()
   public entity: any;
@@ -57,14 +53,12 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
    * Create a copy of current entity;
    *
    * @protected
-   * @type {*}
    */
   protected copyEntity: any;
 
   /**
    * Holds the previous value of the column
    *
-   * @type {*}
    */
   previousValue: any;
 
@@ -84,17 +78,12 @@ export abstract class DynamatableColumnComponent implements DynamatableColumnInp
   /**
    * Standard response for column component
    *
-   * @readonly
-   * @abstract
    */
   protected abstract get response(): DynamatableColumnResponse;
 
   /**
    * Get the column config of smart table
    *
-   * @protected
-   * @template T
-   * @returns {T}
    */
   protected getConfig<T>(): T {
     return this.column && this.column.config;

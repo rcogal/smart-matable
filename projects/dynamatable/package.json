@@ -4,7 +4,10 @@
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
-    "@angular/material": "^8.2.3"
+    "@angular/material": "^8.2.3",
+    "ng-pick-datetime": "^7.0.0",
+    "ng-pick-datetime-moment": "^1.0.8",
+    "ngx-take-until-destroy": "^5.4.0"
   },
   "dependencies": {}
 }

@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DynamatableConfigurationService } from '../../services/dynamatable-configuration.service';
 import { DynamatableColumnType } from '../../models/dynamatable-column-type.enum';
 import { DynamatableColumn } from '../../models/dynamatable-column';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+
+const moment = moment_;
 
 @Component({
   selector: 'rc-dynamatable-column-view-mode',

@@ -17,7 +17,6 @@ export class DynamatableColumnHeaderComponent {
   /**
    * Current binding value of header
    *
-   * @type {string}
    */
   @Input() value: string;
 
