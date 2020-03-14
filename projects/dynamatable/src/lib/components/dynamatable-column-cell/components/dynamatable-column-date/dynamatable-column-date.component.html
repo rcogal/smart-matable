@@ -7,6 +7,6 @@
     (keyup.enter)="onDateTimeChange(this.value)"
     (dateTimeChange)="onDateTimeChange(this.value)">
 
-  <mat-icon matDatepickerToggleIcon svgIcon="date" class="date" [owlDateTimeTrigger]="dt2"></mat-icon>
+  <mat-icon matDatepickerToggleIcon class="dynamat-date-icon" [owlDateTimeTrigger]="dt2">date_range</mat-icon>
   <owl-date-time #dt2></owl-date-time>
 </div>

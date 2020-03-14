@@ -5,4 +5,47 @@
     padding-right: 7px;
     padding-left: 7px;
   }
+
+  th {
+    position: relative;
+  }
+
+  tr.dynmat-row:hover {
+    .dynamat-icon-hidden {
+      visibility: visible;
+    }
+  }
+
+  .dynamat-column-header:hover {
+    .dynamat-icon-hidden {
+      visibility: visible;
+    }
+  }
+}
+
+.dynamat-icon {
+  font-size: 20px;
+}
+
+.dynamat-icon-hidden {
+  visibility: hidden;
+}
+
+.header-icon-delete {
+  position: absolute;
+  right: 5px;
+  visibility: hidden;
+}
+
+// common styles
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pull-right {
+  float: right;
+}
+
+.relative {
+  position: relative;
 }

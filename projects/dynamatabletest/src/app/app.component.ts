@@ -9,37 +9,37 @@ export class AppComponent {
 
   columns = [
     {
-      name: 'remarks',
-      display: 'Remarks',
+      name: 'fullname',
+      display: 'Person Name',
       type: 'text',
       config: {
         width: 300
       }
     },
     {
-      name: 'runlineName',
-      display: 'Runline',
+      name: 'city',
+      display: 'Address',
       type: 'text',
-      config: {}
+      config: {
+        autocomplete: {
+          values: [
+            { name: 'Mandaue City' },
+            { name: 'Cebu City' }
+          ],
+          displayValue: 'name',
+          displayField: 'name',
+          navigation: 'cityJson'
+        }
+      }
     }
   ];
 
   dataSource: any[] = [
     {
-      remarks: 'test remarks',
-      runlineName: 'END0123412'
+      fullname: 'john doe'
     },
     {
-      remarks: 'test remarks',
-      runlineName: 'END0123412'
-    },
-    {
-      remarks: 'test remarks',
-      runlineName: 'END0123412'
-    },
-    {
-      remarks: 'test remarks',
-      runlineName: 'END0123412'
+      fullname: 'jane doe'
     }
   ];
 

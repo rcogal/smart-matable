@@ -190,7 +190,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
     this.selection.clear();
 
-    this.setDisplayedColumns();
+    this.refreshColumns();
   }
 
   /**
@@ -203,7 +203,6 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
     const config: ColumnConfig = {
       hidden: false,
-      editable: true,
       hideable: false
     };
 
@@ -214,6 +213,11 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
       custom: true,
       config
     };
+
+    // add new coumns
+    this.columns.push( column );
+
+    this.refreshColumns();
 
     this.addColumn.emit(column);
   }
@@ -252,7 +256,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * Set displayed colukmns dynamic based on {DynamatableColumn} dyna columns
    *
    */
-  setDisplayedColumns() {
+  refreshColumns() {
     // checkbox column
     this.displayedColumns = [];
 
@@ -301,7 +305,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
     if (event) {
       moveItemInArray(this.columns, this.previousIndex, index);
 
-      this.setDisplayedColumns();
+      this.refreshColumns();
 
       this.draggedHeader.emit( this.columns );
     }
@@ -315,7 +319,7 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
   onSelectionColumn(column: DynamatableColumn) {
     this.selectionSystemMenu.emit(column);
     // set the display columns
-    this.setDisplayedColumns();
+    this.refreshColumns();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -350,6 +354,12 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
    * @param {DynamatableColumn} column
    */
   removeHeader(columnIndex: number, column: DynamatableColumn) {
+
+    if (columnIndex > -1) {
+      this.columns.splice(columnIndex, 1);
+      this.refreshColumns();
+    }
+
     this.removeColumn.emit({
       columnIndex,
       column,
@@ -364,10 +374,10 @@ export class DynamatableComponent implements OnInit, AfterViewInit, OnChanges, O
 
     const editable = column.config.editable;
 
-    if (editable === true) {
-      return DynamatableColumnMode.EDIT;
-    } else {
+    if (editable === false || editable === undefined) {
       return DynamatableColumnMode.VIEW;
+    } else {
+      return DynamatableColumnMode.EDIT;
     }
   }
 

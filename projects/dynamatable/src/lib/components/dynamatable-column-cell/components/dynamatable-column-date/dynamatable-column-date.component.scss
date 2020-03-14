@@ -11,12 +11,13 @@ input {
   padding-right: 20px;
 }
 
-.date {
+.dynamat-date-icon {
   width: 30px;
   height: 15px;
   position: absolute;
   right: 0;
   top: 6px;
+  font-size: 17px;
 }
 
 .relative {
@@ -49,7 +50,7 @@ input {
   }
 
   .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-    background-color: #9A3324;
+    background-color: #887b78;
   }
 
   .owl-dt-timer-content .owl-dt-timer-input {
@@ -89,7 +90,6 @@ input {
     padding: 8px 5px;
     border: 1px solid #F1F1F1;
     box-sizing: border-box;
-    // background: #9A3324;
     border-radius: 4px;
     font-size: 12px;
 
@@ -101,7 +101,7 @@ input {
   }
 
   .owl-dt-container-control-button:nth-child(2) {
-    background: #9A3324;
+    background: #887b78;
     span {
       color: #FFFFFF;
     }

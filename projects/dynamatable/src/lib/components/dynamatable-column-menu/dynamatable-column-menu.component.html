@@ -1,4 +1,4 @@
-<mat-icon class="cursor-pointer add-icon" [matMenuTriggerFor]="appMenu">add_circle_outline</mat-icon>
+<mat-icon class="cursor-pointer add-icon dynamat-icon" [matMenuTriggerFor]="appMenu">add_circle_outline</mat-icon>
 <mat-menu #appMenu="matMenu" id="column-menu-action">
   <div id="menu-header">Add Column</div>
   <mat-divider></mat-divider>
@@ -19,15 +19,15 @@
   <!-- CUSTOM columns -->
   <div class="menu-sub-header">CUSTOM</div>
   <button mat-menu-item (click)="addColumn(Column.TEXT)">
-    <mat-icon class="sub-icon">text_format</mat-icon>
+    <mat-icon class="dynamat-icon">text_format</mat-icon>
     <span class="sub-label">Text</span>
   </button>
   <button mat-menu-item (click)="addColumn(Column.NUMBER)">
-    <mat-icon class="sub-icon">format_list_numbered</mat-icon>
+    <mat-icon class="dynamat-icon">format_list_numbered</mat-icon>
     <span class="sub-label">Number</span>
   </button>
   <button mat-menu-item (click)="addColumn(Column.DATE)">
-    <mat-icon class="sub-icon">calendar_today</mat-icon>
+    <mat-icon class="dynamat-icon">calendar_today</mat-icon>
     <span class="sub-label">Date</span>
   </button>
 </mat-menu>

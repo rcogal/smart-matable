@@ -9,7 +9,8 @@ export class EditableOnEnterDirective {
 
   @Output() enter = new EventEmitter();
 
-  constructor(private editable: DynamatableColumnEditModeComponent) { }
+  constructor(private editable: DynamatableColumnEditModeComponent) {
+  }
 
   @HostListener('keyup.enter', ['$event'])
   public onEnter(event) {
